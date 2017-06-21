@@ -22,7 +22,7 @@ public class AttackAnimation : StateMachineBehaviour
 		Animator animator, AnimatorStateInfo animatorStateInfo,
 		int layerIndex)
 	{
-        if (animatorStateInfo.normalizedTime >= 1.0f
+        if (animatorStateInfo.normalizedTime >= 0.5f
             && TargetActor.AI.IS_ATTACK)
 		{
 			//BaseObject bo =
