@@ -14,6 +14,18 @@ public enum eStateType
 	STATE_DEAD
 }
 
+public enum ePlayerStateType
+{
+    STATE_IDLE,
+    STATE_RUN,
+    STATE_ATTACK,
+    STATE_CRITICAL,
+    STATE_HIT,
+    STATE_POWERUP,
+    STATE_FIREBALL,
+    STATE_DEAD
+}
+
 public enum eStatusData
 {
 	MAX_HP,
