@@ -140,8 +140,7 @@ public class SkillManager : MonoSingleton<SkillManager>
 		listSkill.Add(runSkill);		
 	}
 	
-	BaseSkill CreateSkill(
-		BaseObject owner, SkillTemplate skillTemplate)
+	BaseSkill CreateSkill(BaseObject owner, SkillTemplate skillTemplate)
 	{
 		BaseSkill makeSkill = null;
 		GameObject skillObject = new GameObject();
@@ -156,7 +155,13 @@ public class SkillManager : MonoSingleton<SkillManager>
 			case eSkillTemplateType.RANGE_ATTACK:
 				{
 					makeSkill = skillObject.AddComponent<RangeSkill>();
-                    parentTransform = owner.SelfTransform; //owner.FindInChild("FirePos");
+                    Transform firePos = owner.FindInChild("FirePos");
+                    if(firePos != null)
+                    {
+                        parentTransform = firePos;
+                    }
+                    else 
+                        parentTransform = owner.SelfTransform; //owner.FindInChild("FirePos");
 
                     makeSkill.ThrowEvent(ConstValue.EventKey_SelectModel,
 						GetModel(eSkillModelType.BOX));
@@ -173,8 +178,7 @@ public class SkillManager : MonoSingleton<SkillManager>
 
 			makeSkill.OWNER = owner;
 			makeSkill.SKILL_TEMPLATE = skillTemplate;
-			makeSkill.TARGET = 
-				owner.GetData(ConstValue.ActorData_GetTarget) as BaseObject;
+			makeSkill.TARGET = owner.GetData(ConstValue.ActorData_GetTarget) as BaseObject;
 
 			makeSkill.InitSkill();
 		}
