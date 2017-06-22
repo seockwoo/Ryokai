@@ -10,7 +10,8 @@ public class UIManager : MonoSingleton<UIManager>
     //Dont Destroy를 하지 않기 위함
     public override void Init()
     {
-        Label = transform.FindChild("GameOverLabel").GetComponent<UILabel>();
+        //Label = transform.FindChild("GameOverLabel").GetComponent<UILabel>();
+		//Inventory에서 오류. 오류시 확인할것.
     }
 
     public void SetText(bool isKill, float data)

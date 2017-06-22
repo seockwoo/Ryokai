@@ -198,6 +198,15 @@ public class ActorManager : MonoSingleton<ActorManager>
         return go.GetComponent<Actor>();
         
     }
+	public Actor PlayerInventoryLoad()
+	{
+		GameObject playerPrefab = Resources.Load("Prefabs/Actor/Inventory/" + "Player" + "Inventory") as GameObject;
+
+		GameObject go = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity) as GameObject;
+
+		return go.GetComponent<Actor>();
+	}
+
 
 
 }

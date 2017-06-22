@@ -107,3 +107,15 @@ public enum eSlotType
     SLOT_GUNTLET,
     SLOT_MAX
 }
+
+public enum eLayerType
+{
+	LAYER_DEFAULT = 0,
+	LAYER_TRANSPARENTFX,
+	LAYER_IGNORERAYCAST,
+	LAYER_NONE,
+	LAYER_WATER,
+	LAYER_UI,
+}	
+	
+
