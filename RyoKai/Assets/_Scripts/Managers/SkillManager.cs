@@ -163,8 +163,30 @@ public class SkillManager : MonoSingleton<SkillManager>
                     else 
                         parentTransform = owner.SelfTransform; //owner.FindInChild("FirePos");
 
+
+                    GameObject skillModel;
+
+                    switch (skillTemplate.RANGE_TYPE)
+                    {
+                        case eSkillAttackRangeType.RANGE_BOX:
+                            skillModel = GetModel(eSkillModelType.BOX);
+                            break;
+                        case eSkillAttackRangeType.RANGE_SPHERE:
+                            skillModel = GetModel(eSkillModelType.CIRCLE);
+                            break;
+                        default:
+                            skillModel = null;
+                            break;
+                    }
+
+                    if(skillModel == null)
+                    {
+                        Debug.LogError("skill이 range_type에 따른 model을 받아오지 못했습니다.");
+                        return null;
+                    }
+
                     makeSkill.ThrowEvent(ConstValue.EventKey_SelectModel,
-						GetModel(eSkillModelType.BOX));
+						skillModel);
 				}
 				break;
 		}
